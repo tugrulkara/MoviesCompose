@@ -14,7 +14,6 @@ class GetMovieDetailUseCase @Inject constructor(private val repository: MovieRep
 
         try {
             emit(Resource.Loading())
-
             val movieDetail=repository.getMovieDetail(imdbId)
             emit(Resource.Success(movieDetail.toMovieDetail()))
 
