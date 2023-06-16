@@ -1,6 +1,6 @@
 ## MoviesCompose
 
-Movie App with MVVM + Jetpack Compose + StateFlow + Dagger Hilt +  Modern Android Components
+Movie App with MVVM + Jetpack Compose + Flow + Dagger Hilt +  Modern Android Components
 
 *[OMDB api](https://www.omdbapi.com/)*
 
