@@ -17,7 +17,7 @@ interface MovieApi {
         @Query("apikey") apiKey: String = API_KEY
     ):MoviesDto
 
-    @GET("")
+    @GET(".")
     suspend fun getMovieDetail(
         @Query("i") imdbId: String,
         @Query("apikey") apiKey: String = API_KEY

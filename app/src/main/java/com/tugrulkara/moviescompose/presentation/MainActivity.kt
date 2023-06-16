@@ -13,8 +13,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.tugrulkara.moviescompose.presentation.movie_detail.views.MovieDetailScreen
 import com.tugrulkara.moviescompose.presentation.movies.views.MovieScreen
 import com.tugrulkara.moviescompose.presentation.ui.theme.MoviesComposeTheme
+import com.tugrulkara.moviescompose.util.Constants.IMDB_ID
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -36,8 +38,8 @@ class MainActivity : ComponentActivity() {
                             MovieScreen(navController = navController)
                         }
 
-                        composable(Screen.MovieDetailScreen.root){
-
+                        composable(Screen.MovieDetailScreen.root+"/{${IMDB_ID}}"){
+                            MovieDetailScreen()
                         }
                     }
 

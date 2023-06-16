@@ -1,5 +1,6 @@
 package com.tugrulkara.moviescompose.presentation.movies.views
 
+import android.text.style.BackgroundColorSpan
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -40,6 +41,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.tugrulkara.moviescompose.domain.model.Movie
+import com.tugrulkara.moviescompose.presentation.Screen
 import com.tugrulkara.moviescompose.presentation.movies.MoviesEvent
 import com.tugrulkara.moviescompose.presentation.movies.MoviesViewModel
 
@@ -59,7 +61,7 @@ fun MovieScreen(
             MovieSearchBar(modifier = Modifier
                 .fillMaxWidth()
                 .padding(20.dp),
-                hint = "batman",
+                hint = "iron man",
                 onSearch = {
                     viewModel.onEvent(MoviesEvent.Search(it))
             })
@@ -67,7 +69,7 @@ fun MovieScreen(
             LazyColumn(modifier = Modifier.fillMaxSize()){
                 items(state.movieList){movie->
                     MoviesRow(movie = movie, onItemClick = {
-
+                        navController.navigate(Screen.MovieDetailScreen.root+"/${movie.imdbID}")
                     } )
                 }
             }
@@ -106,7 +108,7 @@ fun MovieSearchBar(
             singleLine = true,
             textStyle = TextStyle(color = Color.Black),
             shape = RoundedCornerShape(12.dp),
-            colors = TextFieldDefaults.textFieldColors(Color.White),
+            colors = TextFieldDefaults.textFieldColors(containerColor = Color.White),
             modifier= Modifier
                 .fillMaxWidth()
                 .shadow(5.dp, CircleShape)
@@ -152,8 +154,8 @@ fun MoviesRow(
         )
         
         Column(
-            modifier = Modifier.align(CenterVertically),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.align(CenterVertically)
         ) {
             Text(
                 text = movie.Title,
